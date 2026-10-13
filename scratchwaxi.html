@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d0c">
+<title>ScratchWax — Restore the Finish. Not the Hype.</title>
+<style>
+:root{
+  --bg:#090b0a; --panel:#111513; --panel2:#151a17; --line:#27302b;
+  --text:#f3f6f3; --muted:#9da8a1; --lime:#c9ff4a; --lime2:#9bd51c;
+  --amber:#ffc857; --danger:#ff806e; --white:#fff;
+  --max:1180px; --r:24px; --shadow:0 24px 80px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1000px 500px at 80% -10%,rgba(201,255,74,.09),transparent 60%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(calc(100% - 32px),var(--max));margin:auto}
+.topbar{background:#0e120f;border-bottom:1px solid var(--line);font-size:12px;color:#c7cec9}
+.topbar .container{display:flex;justify-content:center;gap:18px;padding:8px 0}
+header{position:sticky;top:0;z-index:20;background:rgba(9,11,10,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:20px}
+.logo span{color:var(--lime)}
+.navlinks{display:flex;gap:24px;color:#bac2bd;font-size:14px}
+.navlinks a:hover{color:#fff}
+.navcta,.primary{background:var(--lime);color:#0b0d0a;border:0;font-weight:900;border-radius:14px;padding:13px 18px;box-shadow:0 8px 30px rgba(201,255,74,.15)}
+.navcta:hover,.primary:hover{background:#d7ff75;transform:translateY(-1px)}
+.hero{padding:66px 0 48px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #384231;background:#11180d;color:var(--lime);padding:7px 10px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 14px var(--lime)}
+h1{font-size:clamp(42px,6vw,76px);line-height:.94;letter-spacing:-.065em;margin:20px 0}
+h1 em{font-style:normal;color:var(--lime)}
+.hero-copy{font-size:18px;color:#b6c0b9;max-width:620px}
+.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:28px 0}
+.secondary{border:1px solid var(--line);background:#121613;color:#e8ede9;border-radius:14px;padding:13px 18px;font-weight:800}
+.micro{display:flex;gap:14px;flex-wrap:wrap;color:#8f9993;font-size:12px}
+.micro b{color:#dfe6e1}
+.product-stage{min-height:530px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,#161b18,#0c0f0e);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.glow{position:absolute;width:360px;height:360px;background:radial-gradient(circle,rgba(201,255,74,.18),transparent 65%);right:-80px;top:-80px}
+.product-card{position:absolute;inset:30px;display:flex;align-items:center;justify-content:center}
+.bottle{width:210px;height:350px;position:relative;filter:drop-shadow(0 30px 25px rgba(0,0,0,.5))}
+.cap{position:absolute;top:0;left:55px;width:100px;height:42px;border-radius:8px 8px 3px 3px;background:linear-gradient(90deg,#1b211e,#66736a,#171b19);border:1px solid #59645d}
+.neck{position:absolute;top:35px;left:73px;width:64px;height:42px;background:#202723;border-radius:4px}
+.body{position:absolute;top:70px;left:15px;width:180px;height:275px;border-radius:24px 24px 30px 30px;background:linear-gradient(100deg,#1b211e,#3c473f 45%,#121613);border:1px solid #536057;overflow:hidden}
+.label{position:absolute;left:15px;right:15px;top:62px;height:150px;border-radius:8px;background:linear-gradient(160deg,#d9ff67,#9edb25);color:#0b0e09;padding:16px;text-align:center}
+.label small{font-weight:900;letter-spacing:.16em;font-size:9px}
+.label strong{display:block;font-size:31px;line-height:.9;margin:12px 0 8px;letter-spacing:-.06em}
+.label span{font-size:11px;font-weight:900}
+.spark{position:absolute;border:1px solid rgba(255,255,255,.3);border-radius:50%;width:8px;height:8px}
+.s1{top:110px;right:90px}.s2{bottom:125px;left:80px}.s3{top:170px;left:105px}
+.stage-note{position:absolute;bottom:18px;left:18px;right:18px;display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#89948d}
+.badge{background:#1b2416;color:var(--lime);padding:6px 9px;border-radius:999px;font-weight:900}
+.section{padding:74px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}
+.kicker{color:var(--lime);font-weight:900;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+h2{font-size:clamp(30px,4vw,48px);line-height:1;letter-spacing:-.05em;margin:7px 0 0}
+.section-head p{color:var(--muted);max-width:430px;margin:0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare-card{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:var(--panel);min-height:260px}
+.compare-card.good{background:linear-gradient(145deg,#131a10,#111513);border-color:#3c4e27}
+.car-art{height:145px;border-radius:16px;background:#0b0e0c;position:relative;overflow:hidden}
+.car-art:before{content:"";position:absolute;left:12%;right:12%;bottom:34px;height:55px;border-radius:48px 55px 15px 15px;background:linear-gradient(160deg,#3c4640,#111512);box-shadow:inset 0 1px rgba(255,255,255,.25)}
+.car-art:after{content:"";position:absolute;left:28%;width:44%;bottom:78px;height:42px;border-radius:40px 40px 0 0;background:linear-gradient(120deg,#222a26,#647067)}
+.scratches{position:absolute;width:100px;height:3px;background:#9d564d;transform:rotate(-12deg);top:89px;left:48%;box-shadow:15px 10px #9d564d,-8px 19px #9d564d}
+.clean{background:linear-gradient(90deg,transparent,#d6ff67,transparent);height:3px;position:absolute;top:102px;left:36%;right:18%;box-shadow:0 12px 20px rgba(201,255,74,.22)}
+.compare-title{display:flex;justify-content:space-between;align-items:center;margin:16px 0 4px;font-weight:900}
+.muted{color:var(--muted);font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.step{padding:24px;border:1px solid var(--line);background:var(--panel);border-radius:var(--r)}
+.num{font-size:12px;color:var(--lime);font-weight:900}
+.step h3{margin:24px 0 6px;font-size:21px}
+.truth{border:1px solid #5b4d2d;background:linear-gradient(145deg,#19170f,#111513);border-radius:var(--r);padding:25px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.truth h3{margin:0 0 10px}.truth p{color:#b4b9ad;margin:0}
+.truth ul{margin:0;padding-left:20px;color:#c7cec8}.truth li{margin:8px 0}
+.plans{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch}
+.plan-main,.plan-side{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:28px}
+.plan-main{background:linear-gradient(145deg,#17200f,#111513);border-color:#3c4e27}
+.price{font-size:54px;line-height:1;font-weight:950;letter-spacing:-.06em;margin:10px 0}
+.old{color:#737d76;text-decoration:line-through;font-size:15px}
+.selectors{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:22px 0}
+.qty{border:1px solid var(--line);background:#0d100e;color:#dce2de;border-radius:12px;padding:11px 5px;text-align:center;font-size:12px}
+.qty.active{border-color:var(--lime);background:#18220e;color:var(--lime)}
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:9px;color:#bfc8c2;font-size:13px;margin:20px 0}
+.perks div:before{content:"✓";color:var(--lime);font-weight:900;margin-right:7px}
+.order{margin-top:14px}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,select,textarea{width:100%;background:#0b0e0c;border:1px solid var(--line);border-radius:12px;color:#edf1ee;padding:13px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#718a43;box-shadow:0 0 0 3px rgba(201,255,74,.07)}
+.field{margin-bottom:10px}
+.field label{display:block;color:#8f9993;font-size:11px;font-weight:800;margin:0 0 5px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.review{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:22px}
+.stars{color:var(--lime);letter-spacing:2px}
+.review p{color:#c2cac5;font-size:14px}
+.review small{color:#818c85}
+.faq{display:grid;gap:8px;max-width:850px;margin:auto}
+details{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px 18px}
+summary{cursor:pointer;font-weight:850}
+details p{color:var(--muted);margin:12px 0 0;font-size:14px}
+footer{border-top:1px solid var(--line);padding:38px 0 100px;color:#7f8983;font-size:12px}
+.footer-grid{display:flex;justify-content:space-between;gap:20px}
+.sticky{display:none}
+.toast{position:fixed;right:18px;bottom:18px;z-index:50;background:#eaffbd;color:#10140c;padding:13px 16px;border-radius:13px;font-weight:850;box-shadow:var(--shadow);transform:translateY(130px);transition:.25s}
+.toast.show{transform:none}
+@media(max-width:850px){
+ .navlinks{display:none}.hero{padding-top:38px}.hero-grid,.plans,.truth{grid-template-columns:1fr}.product-stage{min-height:450px}.steps,.reviews{grid-template-columns:1fr}.compare{grid-template-columns:1fr}.selectors{grid-template-columns:repeat(3,1fr)}.perks{grid-template-columns:1fr}.hero-actions .primary{width:100%}.sticky{display:flex;position:fixed;z-index:30;bottom:0;left:0;right:0;padding:10px;background:rgba(9,11,10,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);gap:8px}.sticky .primary{flex:1}.container{width:min(calc(100% - 22px),var(--max))}.footer-grid{display:block}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container"><span>🚚 Nationwide delivery</span><span>•</span><span>💵 Pay on delivery</span><span>•</span><span>↩ 30-day guarantee*</span></div></div>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">SCRATCH<span>WAX</span></a>
+    <nav class="navlinks"><a href="#how">How it works</a><a href="#truth">What it can do</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
+    <a class="navcta" href="#order">Order now</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+<div class="container hero-grid">
+  <div>
+    <span class="eyebrow"><i class="dot"></i> DIY paint-care treatment</span>
+    <h1>Make a tired finish look <em>fresh again.</em></h1>
+    <p class="hero-copy">A simple scratch-and-shine treatment for the everyday marks your car picks up from parking, road dust, minor scuffs and weather.</p>
+    <div class="hero-actions"><a class="primary" href="#order">Get 1 bottle — ₦27,500</a><a class="secondary" href="#truth">See what it actually does</a></div>
+    <div class="micro"><span><b>✓</b> DIY application</span><span><b>✓</b> Nationwide delivery</span><span><b>✓</b> Pay on delivery</span></div>
+  </div>
+  <div class="product-stage" aria-label="ScratchWax product illustration">
+    <div class="glow"></div><div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+    <div class="product-card">
+      <div class="bottle"><div class="cap"></div><div class="neck"></div><div class="body"><div class="label"><small>CAR FINISH CARE</small><strong>SCRATCH<br>WAX</strong><span>RESTORE • POLISH • PROTECT</span></div></div></div>
+    </div>
+    <div class="stage-note"><span>Concept redesign • product-first</span><span class="badge">₦27,500</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="how">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">The decision in 30 seconds</div><h2>See the difference before you buy.</h2></div><p>Instead of burying the buyer under claims, the page makes the intended use case obvious.</p></div>
+ <div class="compare">
+  <article class="compare-card"><div class="car-art"><div class="scratches"></div></div><div class="compare-title"><span>Before</span><span class="muted">visible marks + dullness</span></div><p class="muted">Minor surface scuffs, paint transfer and dull areas can make a clean car look neglected.</p></article>
+  <article class="compare-card good"><div class="car-art"><div class="clean"></div></div><div class="compare-title"><span>After treatment</span><span class="badge">cleaner finish</span></div><p class="muted">The goal: reduce the appearance of suitable surface marks and bring back gloss.</p></article>
+ </div>
+</div>
+</section>
+
+<section class="section" id="truth">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">Proof-of-integrity layer</div><h2>No magic. Know the boundary.</h2></div><p>A trustworthy product page should tell you when a product is appropriate—and when it is not.</p></div>
+ <div class="truth">
+  <div><h3>Good candidate</h3><ul><li>Light surface scratches and swirls</li><li>Minor scuffs / paint-transfer marks</li><li>Water spots and road grime</li><li>Faded or dull-looking surface finish</li></ul></div>
+  <div><h3>Manage expectations</h3><ul><li>Deep scratches through the paint need professional repair</li><li>Test a small hidden area first</li><li>Results vary with paint condition and scratch depth</li><li>Do not treat this page as proof of a guaranteed six-month shield</li></ul></div>
+ </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">Three-step flow</div><h2>Apply. Work. Wipe.</h2></div><p>Designed around the smallest useful interaction loop.</p></div>
+ <div class="steps">
+  <article class="step"><span class="num">01 / PREP</span><h3>Clean the panel</h3><p class="muted">Remove dust and loose grit. Work on a cool, dry surface away from direct heat.</p></article>
+  <article class="step"><span class="num">02 / APPLY</span><h3>Work a small area</h3><p class="muted">Apply a small amount and work the product according to its label directions.</p></article>
+  <article class="step"><span class="num">03 / FINISH</span><h3>Wipe & inspect</h3><p class="muted">Buff the area and inspect under good light. Repeat only if appropriate.</p></article>
+ </div>
+</div>
+</section>
+
+<section class="section" id="order">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">Offer</div><h2>Choose your quantity.</h2></div><p>Simple pricing. No countdown tricks. Select the bundle that makes sense for you.</p></div>
+ <div class="plans">
+  <div class="plan-main">
+    <div class="muted">Selected package</div><div id="planName" style="font-weight:900;font-size:22px;margin-top:4px">1 bottle</div>
+    <div class="price" id="price">₦27,500</div><div class="old" id="unit">₦27,500 per bottle</div>
+    <div class="selectors">
+      <button class="qty active" data-name="1 bottle" data-price="27500" data-unit="₦27,500 per bottle">1<br><b>₦27.5k</b></button>
+      <button class="qty" data-name="3 bottles" data-price="53000" data-unit="₦17,667 per bottle">2 + 1 FREE<br><b>₦53k</b></button>
+      <button class="qty" data-name="5 bottles" data-price="80000" data-unit="₦16,000 per bottle">3 + 2 FREE<br><b>₦80k</b></button>
+      <button class="qty" data-name="7 bottles" data-price="107000" data-unit="₦15,286 per bottle">4 + 3 FREE<br><b>₦107k</b></button>
+      <button class="qty" data-name="9 bottles" data-price="126000" data-unit="₦14,000 per bottle">5 + 4 FREE<br><b>₦126k</b></button>
+    </div>
+    <div class="perks"><div>Nationwide delivery</div><div>Pay on delivery</div><div>30-day guarantee*</div><div>DIY application</div></div>
+    <a class="primary" style="display:block;text-align:center" href="#form">Continue to order</a>
+  </div>
+  <aside class="plan-side">
+    <div class="kicker">Why this checkout is different</div>
+    <h3 style="font-size:25px;margin:9px 0">Less friction. More confidence.</h3>
+    <p class="muted">The original page asks for a large form before the buyer has fully understood the offer. This version lets quantity selection happen first.</p>
+    <div style="border-top:1px solid var(--line);margin:20px 0"></div>
+    <p class="muted"><b style="color:#fff">Delivery:</b> The source offer states 1–3 days and nationwide delivery. Confirm the exact delivery charge/eligibility at checkout.</p>
+  </aside>
+ </div>
+</div>
+</section>
+
+<section class="section" id="reviews">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">Customer voice</div><h2>Real-world stories, not hype.</h2></div><p>These testimonials are carried over as social proof from the source page; they are not independently verified here.</p></div>
+ <div class="reviews">
+  <article class="review"><div class="stars">★★★★★</div><p>“I was skeptical at first, but my brother insisted. I bought just 1 bottle — and wow! My car’s scratches vanished in minutes.”</p><small>Joseph · Lagos · source-page testimonial</small></article>
+  <article class="review"><div class="stars">★★★★★</div><p>“A careless okada rider scraped my Corolla in traffic. Ten minutes later, the mark was gone like it never happened!”</p><small>Musa · Abuja · source-page testimonial</small></article>
+  <article class="review"><div class="stars">★★★★★</div><p>“The mechanic told me repainting my Honda would cost ₦95,000. I tried this product instead…”</p><small>Grace N. · Abuja · source-page testimonial</small></article>
+ </div>
+</div>
+</section>
+
+<section class="section" id="faq">
+<div class="container">
+ <div class="section-head"><div><div class="kicker">FAQ</div><h2>Before you order.</h2></div></div>
+ <div class="faq">
+  <details open><summary>Will it remove a deep scratch?</summary><p>Do not assume so. If the scratch has cut through the paint layer, a wax/polish treatment cannot replace missing paint. The safest approach is to test a small area and seek professional repair for deep damage.</p></details>
+  <details><summary>Does it work on every colour?</summary><p>The source page markets it for multiple colours and paint types. Actual results depend on the surface condition, finish and product compatibility, so spot-testing is sensible.</p></details>
+  <details><summary>Is delivery available nationwide?</summary><p>The source page advertises nationwide delivery, 1–3 day delivery and pay on delivery. Confirm your location and final delivery terms when ordering.</p></details>
+  <details><summary>Can I order through WhatsApp?</summary><p>Yes. Use the WhatsApp button below. It opens a chat to the phone number published on the source page.</p></details>
+ </div>
+</div>
+</section>
+
+<section class="section" id="form">
+<div class="container">
+ <div class="plans">
+  <div class="plan-side">
+   <div class="kicker">Order details</div><h2 style="font-size:34px">Ready when you are.</h2>
+   <p class="muted">Enter only what is needed to arrange delivery. No account required.</p>
+   <div class="order-grid order">
+    <div class="field"><label>Name</label><input id="name" autocomplete="name" placeholder="Your name"></div>
+    <div class="field"><label>Phone</label><input id="phone" autocomplete="tel" placeholder="080…"></div>
+   </div>
+   <div class="order-grid">
+    <div class="field"><label>City</label><input id="city" placeholder="e.g. Abuja"></div>
+    <div class="field"><label>State</label><input id="state" placeholder="e.g. FCT"></div>
+   </div>
+   <div class="field"><label>Delivery address</label><textarea id="address" rows="3" placeholder="Where should we deliver?"></textarea></div>
+   <button class="primary" style="width:100%" id="submit">Place order request</button>
+   <p class="muted" style="font-size:11px;margin-bottom:0">Demo front-end: this prototype does not transmit or store your order.</p>
+  </div>
+  <div class="plan-main">
+    <div class="kicker">Order summary</div><h3 id="summaryName" style="font-size:26px;margin:8px 0">1 bottle</h3>
+    <div class="price" id="summaryPrice">₦27,500</div>
+    <p class="muted">Pay-on-delivery flow shown for the prototype. A production checkout would require a real order endpoint and server-side validation.</p>
+    <div style="border-top:1px solid var(--line);margin:22px 0"></div>
+    <a class="secondary" style="display:block;text-align:center;margin-bottom:10px" href="https://wa.me/2347015494674?text=Hi%20ScratchWax%2C%20I%27d%20like%20to%20order%20the%20scratch%20wax." target="_blank" rel="noopener">Order on WhatsApp</a>
+    <div class="muted" style="font-size:12px;text-align:center">Published contact: 07015494674</div>
+  </div>
+ </div>
+</div>
+</section>
+</main>
+
+<footer><div class="container footer-grid"><div><b style="color:#fff">SCRATCHWAX</b><br>Concept redesign for a Nigerian direct-response product page.</div><div>Source offer claims should be independently verified before production launch.</div></div></footer>
+<div class="sticky"><a class="primary" href="#order">Order — <span id="stickyPrice">₦27,500</span></a><a class="secondary" href="https://wa.me/2347015494674?text=Hi%20ScratchWax%2C%20I%27d%20like%20to%20order." target="_blank" rel="noopener">WhatsApp</a></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const buttons=[...document.querySelectorAll('.qty')];
+  const ids=['price','summaryPrice','stickyPrice'], names=['planName','summaryName'];
+  function money(n){return '₦'+Number(n).toLocaleString('en-NG')}
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+    buttons.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+    const p=b.dataset.price,n=b.dataset.name,u=b.dataset.unit;
+    ids.forEach(id=>document.getElementById(id).textContent=money(p));
+    names.forEach(id=>document.getElementById(id).textContent=n);
+    document.getElementById('unit').textContent=u;
+  }));
+  document.getElementById('submit').addEventListener('click',()=>{
+    const name=document.getElementById('name').value.trim(), phone=document.getElementById('phone').value.trim();
+    const toast=document.getElementById('toast');
+    if(!name || !phone){toast.textContent='Please enter your name and phone number.';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2800);return}
+    toast.textContent='Order request validated locally — connect your backend to submit it.';
+    toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3200);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d0f">
+  <meta name="description" content="Car Scratch Wax — a premium direct-response product page concept for minor surface scratches, swirl marks and paint haze.">
+  <title>Car Scratch Wax — Restore the Finish, Not the Whole Car</title>
+  <style>
+    :root {
+      --bg: #080a0c;
+      --surface: #111417;
+      --surface-2: #171b1f;
+      --text: #f5f4ef;
+      --muted: #a8adb2;
+      --line: rgba(255,255,255,.10);
+      --accent: #ff6a22;
+      --accent-2: #ffb26b;
+      --good: #55d39d;
+      --warning: #ffd166;
+      --max: 1180px;
+      --radius: 22px;
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 80% -10%, rgba(255,106,34,.14), transparent 30%),
+        radial-gradient(circle at 8% 25%, rgba(255,255,255,.05), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .announcement {
+      border-bottom: 1px solid var(--line);
+      background: #0d1012;
+      color: #d6d9dc;
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .announcement .container { min-height: 38px; display:flex; align-items:center; justify-content:center; text-align:center; }
+    header {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(8,10,12,.78); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { height: 70px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.03em; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,#fff,#aaa); color:#111; font-size:12px; }
+    .nav-links { display:flex; gap:24px; font-size:14px; color:#c6c9cc; }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta { padding:11px 16px; border:1px solid rgba(255,106,34,.45); background:rgba(255,106,34,.12); color:#ffd9c4; border-radius:999px; font-weight:700; }
+
+    .hero { padding: 72px 0 46px; }
+    .hero-grid { display:grid; grid-template-columns: 1.08fr .92fr; gap:58px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:#d9dcde; font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow: 0 0 18px rgba(255,106,34,.8); }
+    h1 { margin:18px 0 18px; font-size:clamp(44px,7vw,78px); line-height:.95; letter-spacing:-.065em; max-width:760px; }
+    h1 span { color:var(--accent-2); }
+    .hero-copy { color:#bcc2c6; font-size:18px; max-width:650px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin:30px 0 20px; }
+    .btn { border:0; border-radius:14px; padding:15px 20px; font-weight:800; transition:transform .18s ease, filter .18s ease; }
+    .btn:hover { transform: translateY(-2px); filter:brightness(1.05); }
+    .btn-primary { background:var(--accent); color:#160b05; box-shadow:0 14px 32px rgba(255,106,34,.20); }
+    .btn-secondary { background:#1b1f23; color:#f4f4f2; border:1px solid var(--line); }
+    .micro-proof { display:flex; flex-wrap:wrap; gap:12px 18px; color:#9ea4a8; font-size:13px; }
+    .micro-proof b { color:#eee; }
+
+    .product-stage { position:relative; min-height:510px; display:grid; place-items:center; }
+    .glow { position:absolute; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle, rgba(255,106,34,.28), rgba(255,106,34,.04) 42%, transparent 70%); filter:blur(10px); }
+    .product-card { position:relative; width:min(100%,450px); border:1px solid rgba(255,255,255,.12); border-radius:32px; overflow:hidden; background:linear-gradient(145deg,#181b1f,#0e1012); box-shadow:var(--shadow); transform:rotate(1.2deg); }
+    .product-top { min-height:390px; display:grid; place-items:center; position:relative; }
+    .product-top::after { content:""; position:absolute; inset:18% 12% 5%; border:1px solid rgba(255,255,255,.07); border-radius:50%; transform:rotate(-18deg); }
+    .bottle { width:155px; height:280px; position:relative; z-index:2; filter:drop-shadow(0 28px 30px rgba(0,0,0,.55)); }
+    .bottle .cap { width:72px; height:36px; background:linear-gradient(#3c4145,#15181a); border-radius:8px 8px 4px 4px; margin:0 auto -1px; box-shadow:inset 0 2px 0 rgba(255,255,255,.15); }
+    .bottle .neck { width:64px; height:32px; margin:auto; background:#23272a; }
+    .bottle .body { height:212px; margin-top:-2px; border-radius:20px 20px 32px 32px; background:linear-gradient(90deg,#121517,#272c30 50%,#111416); border:1px solid #444; position:relative; overflow:hidden; }
+    .bottle .label { position:absolute; left:12px; right:12px; top:48px; padding:22px 8px; background:#ede7dc; color:#141414; border-radius:8px; text-align:center; }
+    .bottle .label small { display:block; font-size:9px; font-weight:800; letter-spacing:.12em; }
+    .bottle .label strong { display:block; margin-top:7px; font-size:19px; letter-spacing:-.06em; }
+    .bottle .label em { display:block; margin-top:7px; font-style:normal; font-size:9px; color:#57514a; }
+    .sparkle { position:absolute; z-index:1; border:1px solid rgba(255,255,255,.38); border-radius:50%; opacity:.7; }
+    .sparkle.s1 { width:18px; height:18px; top:92px; right:78px; }
+    .sparkle.s2 { width:8px; height:8px; top:164px; left:94px; }
+    .sparkle.s3 { width:13px; height:13px; bottom:92px; right:105px; }
+    .product-meta { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 20px; background:rgba(0,0,0,.23); border-top:1px solid var(--line); }
+    .price { font-size:22px; font-weight:900; }
+    .price small { color:#858b90; font-weight:600; font-size:12px; display:block; }
+    .tag { padding:8px 10px; border-radius:10px; font-size:11px; font-weight:800; background:#1d2421; color:#9eebc9; border:1px solid rgba(85,211,157,.18); }
+
+    .trust-strip { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#0c0f11; }
+    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    .trust-item { padding:20px 18px; border-right:1px solid var(--line); font-size:13px; color:#aeb4b8; }
+    .trust-item:last-child { border-right:0; }
+    .trust-item strong { display:block; color:#fff; font-size:14px; margin-bottom:4px; }
+
+    section { padding:92px 0; }
+    .section-head { max-width:720px; margin-bottom:40px; }
+    .kicker { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#9ea4a8; font-weight:800; }
+    h2 { margin:10px 0 12px; font-size:clamp(34px,5vw,54px); line-height:1; letter-spacing:-.05em; }
+    .lead { color:#9fa5aa; font-size:17px; }
+
+    .problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .problem { padding:30px; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(145deg,#121619,#0c0f11); }
+    .problem h3 { margin:14px 0 8px; font-size:22px; }
+    .problem p { margin:0; color:#9fa5aa; }
+    .icon { width:42px; height:42px; display:grid; place-items:center; border-radius:12px; background:#20252a; color:#fff; font-weight:900; }
+
+    .demo { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .finish { min-height:380px; position:relative; overflow:hidden; border-radius:26px; border:1px solid var(--line); }
+    .finish.before { background:linear-gradient(160deg,#5b5d60 0 27%, #36393c 27% 57%, #55585b 57%); }
+    .finish.before::before { content:""; position:absolute; width:70%; height:4px; background:rgba(10,10,10,.75); left:12%; top:29%; transform:rotate(-8deg); box-shadow: 0 54px rgba(10,10,10,.65), 30px 100px 0 rgba(15,15,15,.52); }
+    .finish.after { background:linear-gradient(140deg,#555b60,#111416 38%,#33383d 59%,#0a0c0e); }
+    .finish.after::before { content:""; position:absolute; inset:0; background:linear-gradient(115deg,transparent 35%, rgba(255,255,255,.35) 48%, transparent 61%); transform:skewX(-18deg); opacity:.65; }
+    .finish .label { position:absolute; left:18px; top:18px; padding:8px 10px; border-radius:999px; background:rgba(5,5,5,.56); border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(8px); font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.1em; }
+    .note { margin-top:14px; color:#898f94; font-size:12px; }
+
+    .how { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .step { padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:#101315; }
+    .step-num { color:var(--accent-2); font-weight:900; font-size:12px; letter-spacing:.12em; }
+    .step h3 { font-size:21px; margin:34px 0 8px; }
+    .step p { color:#9fa5aa; margin:0; }
+
+    .offer-wrap { display:grid; grid-template-columns: .9fr 1.1fr; gap:20px; align-items:stretch; }
+    .offer-copy, .offer-box { border:1px solid var(--line); border-radius:28px; background:linear-gradient(145deg,#14181b,#0d1012); }
+    .offer-copy { padding:34px; }
+    .offer-points { margin:24px 0 0; display:grid; gap:14px; }
+    .offer-point { display:flex; gap:12px; align-items:flex-start; color:#b7bdc1; }
+    .tick { width:22px; height:22px; flex:0 0 auto; display:grid; place-items:center; border-radius:50%; background:#1e3129; color:#81e5b7; font-size:12px; font-weight:900; }
+    .offer-box { padding:20px; }
+    .bundle-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .bundle { padding:20px; border:1px solid var(--line); border-radius:18px; background:#0c0f11; position:relative; }
+    .bundle.featured { border-color:rgba(255,106,34,.55); box-shadow:0 0 0 1px rgba(255,106,34,.08) inset; }
+    .bundle .ribbon { position:absolute; top:12px; right:12px; padding:6px 8px; border-radius:999px; background:rgba(255,106,34,.12); color:#ffc9ae; font-size:10px; font-weight:900; text-transform:uppercase; }
+    .bundle h3 { margin:0; font-size:19px; }
+    .bundle .bundle-price { margin:16px 0 2px; font-size:30px; font-weight:900; letter-spacing:-.04em; }
+    .bundle .old { color:#70767a; text-decoration:line-through; font-size:12px; }
+    .bundle p { color:#949a9f; font-size:13px; margin:12px 0 16px; min-height:38px; }
+    .bundle .btn { width:100%; }
+    .offer-foot { display:flex; gap:12px; align-items:center; padding:15px 4px 0; color:#858b90; font-size:12px; }
+
+    .reviews { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .review { padding:26px; border:1px solid var(--line); border-radius:var(--radius); background:#0f1214; }
+    .stars { color:#ffbf75; letter-spacing:.16em; }
+    .review p { color:#b6bdc1; font-size:15px; }
+    .review .who { color:#fff; font-weight:800; font-size:13px; }
+    .review .city { color:#777e83; font-size:12px; }
+
+    .faq { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
+    details { border:1px solid var(--line); border-radius:16px; background:#101315; overflow:hidden; }
+    summary { padding:19px 20px; font-weight:800; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; color:#777; }
+    details[open] summary::after { content:"−"; }
+    details p { margin:0; padding:0 20px 20px; color:#969da1; }
+
+    .order-section { background:linear-gradient(180deg,#0b0d0f,#111518); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .order-grid { display:grid; grid-template-columns: .86fr 1.14fr; gap:20px; }
+    .order-intro, .order-form { padding:32px; border:1px solid var(--line); border-radius:28px; background:#0c0f11; }
+    .order-intro { display:flex; flex-direction:column; justify-content:space-between; }
+    .summary-card { margin-top:24px; padding:18px; border:1px dashed rgba(255,255,255,.18); border-radius:18px; }
+    .summary-row { display:flex; justify-content:space-between; gap:12px; padding:7px 0; color:#9ca2a6; font-size:13px; }
+    .summary-row strong { color:#fff; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .field { display:grid; gap:7px; }
+    .field.full { grid-column:1 / -1; }
+    label { font-size:12px; color:#aeb4b8; font-weight:700; }
+    input, select, textarea { width:100%; border:1px solid var(--line); background:#15191c; color:#fff; border-radius:12px; padding:13px 14px; outline:none; }
+    input:focus, select:focus, textarea:focus { border-color:rgba(255,106,34,.65); box-shadow:0 0 0 3px rgba(255,106,34,.10); }
+    textarea { min-height:92px; resize:vertical; }
+    .form-actions { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; }
+    .form-note { margin-top:10px; color:#767d82; font-size:11px; }
+    .status { display:none; margin-top:14px; padding:12px 14px; border-radius:12px; font-size:13px; }
+    .status.show { display:block; }
+    .status.error { background:#2b1614; color:#ffb7ac; border:1px solid rgba(255,82,62,.2); }
+    .status.success { background:#12261e; color:#a9edcc; border:1px solid rgba(85,211,157,.2); }
+
+    footer { padding:40px 0 100px; color:#71787d; font-size:12px; }
+    .footer-grid { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; }
+    .footer-brand { color:#f1f1ed; font-weight:900; font-size:15px; }
+    .fine { max-width:650px; }
+    .sticky-buy { display:none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display:none; }
+      .hero-grid, .offer-wrap, .order-grid { grid-template-columns:1fr; }
+      .product-stage { min-height:430px; }
+      .trust-grid { grid-template-columns:1fr 1fr; }
+      .trust-item:nth-child(2) { border-right:0; }
+      .trust-item:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+      .problem-grid, .demo, .faq { grid-template-columns:1fr; }
+      .how, .reviews { grid-template-columns:1fr; }
+    }
+    @media (max-width: 620px) {
+      .container { width:min(var(--max), calc(100% - 22px)); }
+      .announcement .container { padding:10px 0; line-height:1.3; }
+      .nav { height:62px; }
+      .nav-cta { padding:9px 12px; font-size:12px; }
+      .hero { padding:48px 0 28px; }
+      h1 { font-size:50px; }
+      .hero-copy { font-size:16px; }
+      section { padding:70px 0; }
+      .product-stage { min-height:360px; }
+      .product-card { width:88%; }
+      .product-top { min-height:315px; }
+      .bottle { transform:scale(.82); }
+      .trust-grid { grid-template-columns:1fr; }
+      .trust-item { border-right:0; border-bottom:1px solid var(--line); }
+      .trust-item:last-child { border-bottom:0; }
+      .bundle-grid, .form-grid { grid-template-columns:1fr; }
+      .field.full { grid-column:auto; }
+      .footer-grid { flex-direction:column; }
+      .sticky-buy { display:flex; position:fixed; z-index:40; left:10px; right:10px; bottom:10px; padding:10px; gap:10px; background:rgba(12,15,17,.94); backdrop-filter:blur(16px); border:1px solid var(--line); border-radius:18px; box-shadow:0 20px 50px rgba(0,0,0,.45); }
+      .sticky-buy .price-mini { flex:1; display:flex; flex-direction:column; justify-content:center; padding-left:5px; }
+      .sticky-buy .price-mini strong { font-size:14px; }
+      .sticky-buy .price-mini span { font-size:10px; color:#7f858a; }
+      .sticky-buy .btn { padding:12px 14px; border-radius:12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { transition:none !important; animation:none !important; } }
+  </style>
+</head>
+<body>
+  <div class="announcement"><div class="container">Pay on delivery • Nigeria delivery support • Secure order capture</div></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Car Scratch Wax home"><span class="brand-mark">CSW</span><span>CAR SCRATCH WAX</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a href="#offer">Offer</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="#order">Order now →</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Paint-care made simple</div>
+          <h1>Make minor scratches <span>disappear from the finish.</span></h1>
+          <p class="hero-copy">A practical wax-and-polish treatment for light surface marks, swirl haze and dull paint. Clean up the finish before you spend money on a full body-shop job.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#offer">See the bundle →</a>
+            <a class="btn btn-secondary" href="#how">How it works</a>
+          </div>
+          <div class="micro-proof"><span>✓ <b>Easy application</b></span><span>✓ <b>At-home use</b></span><span>✓ <b>Built for quick touch-ups</b></span></div>
+        </div>
+        <div class="product-stage" aria-label="Product visual">
+          <div class="glow"></div>
+          <div class="product-card">
+            <div class="product-top">
+              <span class="sparkle s1"></span><span class="sparkle s2"></span><span class="sparkle s3"></span>
+              <div class="bottle" aria-hidden="true">
+                <div class="cap"></div><div class="neck"></div>
+                <div class="body"><div class="label"><small>PREMIUM FINISH TREATMENT</small><strong>CAR<br>SCRATCH WAX</strong><em>CLEAN • POLISH • PROTECT</em></div></div>
+              </div>
+            </div>
+            <div class="product-meta">
+              <div class="price"><small>Starting at</small>₦27,500</div>
+              <div class="tag">PAY ON DELIVERY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item"><strong>Light surface marks</strong>Designed around everyday cosmetic paint defects.</div>
+        <div class="trust-item"><strong>Fast at-home process</strong>Apply, buff and inspect under good lighting.</div>
+        <div class="trust-item"><strong>Paint-friendly approach</strong>Use gentle pressure and work in small sections.</div>
+        <div class="trust-item"><strong>Simple checkout</strong>Choose your pack, enter delivery details and confirm.</div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">The real problem</div>
+          <h2>Your car can look tired without needing a full respray.</h2>
+          <p class="lead">Daily washing, dust, branches, parking-lot contact and fine swirl marks slowly flatten the gloss. The first move should be a smart cosmetic treatment—not automatically a body-shop bill.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="problem"><div class="icon">01</div><h3>Light scratches & scuffs</h3><p>Marks that mainly live in the clear-coat or surface layer are the ideal target for a polish/wax treatment.</p></article>
+          <article class="problem"><div class="icon">02</div><h3>Dull, hazy paint</h3><p>Oxidation-like haze and swirl-heavy finishes can make healthy paint look older than it is.</p></article>
+          <article class="problem"><div class="icon">03</div><h3>Expensive first reactions</h3><p>Not every cosmetic imperfection deserves sanding, repainting or replacing a panel.</p></article>
+          <article class="problem"><div class="icon">04</div><h3>Hard-to-maintain shine</h3><p>A clean-looking finish needs both surface correction and protection—not just another wash.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">What the treatment is for</div>
+          <h2>See the difference in the surface, not in the marketing copy.</h2>
+          <p class="lead">The redesigned page deliberately separates cosmetic improvement from impossible repair claims.</p>
+        </div>
+        <div class="demo">
+          <div><div class="finish before"><span class="label">Before / marked surface</span></div><p class="note">Illustrative surface representation—not a guarantee of identical results on every scratch.</p></div>
+          <div><div class="finish after"><span class="label">After / polished finish</span></div><p class="note">Deep gouges, exposed primer/metal and damaged panels generally require professional repair.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">3-step application</div>
+          <h2>No complicated detailing setup.</h2>
+        </div>
+        <div class="how">
+          <article class="step"><div class="step-num">STEP 01</div><h3>Wash & dry</h3><p>Remove dust and grit first. Never rub a dirty panel aggressively.</p></article>
+          <article class="step"><div class="step-num">STEP 02</div><h3>Apply lightly</h3><p>Work on a cool, shaded panel with a clean applicator and small circular passes.</p></article>
+          <article class="step"><div class="step-num">STEP 03</div><h3>Buff & inspect</h3><p>Buff residue with a clean microfiber towel, then inspect from multiple angles.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer">
+      <div class="container offer-wrap">
+        <div class="offer-copy">
+          <div class="kicker">The offer</div>
+          <h2>Start with one. Save more when you're doing more cars.</h2>
+          <p class="lead">Keep the first purchase simple, then make the multi-pack the obvious value choice for households, dealers and detailing side-hustles.</p>
+          <div class="offer-points">
+            <div class="offer-point"><span class="tick">✓</span><span>One-bottle option for a single touch-up project.</span></div>
+            <div class="offer-point"><span class="tick">✓</span><span>Multi-pack option when you want more product on hand.</span></div>
+            <div class="offer-point"><span class="tick">✓</span><span>Pay-on-delivery flow keeps the buying decision familiar.</span></div>
+          </div>
+        </div>
+        <div class="offer-box">
+          <div class="bundle-grid">
+            <article class="bundle">
+              <h3>1 Bottle</h3>
+              <div class="bundle-price">₦27,500</div>
+              <div class="old">Starter option</div>
+              <p>Best for trying the treatment on one vehicle.</p>
+              <button class="btn btn-secondary choose-bundle" data-pack="1 Bottle" data-price="27500">Choose 1 bottle</button>
+            </article>
+            <article class="bundle featured">
+              <span class="ribbon">Best value</span>
+              <h3>2 Bottles</h3>
+              <div class="bundle-price">₦49,500</div>
+              <div class="old">Bundle saving</div>
+              <p>Better fit for repeat touch-ups or multiple vehicles.</p>
+              <button class="btn btn-primary choose-bundle" data-pack="2 Bottles" data-price="49500">Choose bundle</button>
+            </article>
+          </div>
+          <div class="offer-foot">✓ Prices shown are the page's redesigned offer structure. Connect live stock, shipping and payment logic before production.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Social proof</div>
+          <h2>Proof belongs close to the decision.</h2>
+          <p class="lead">These are presentation placeholders in the redevelopment. Replace them with verified customer reviews from the store.</p>
+        </div>
+        <div class="reviews">
+          <article class="review"><div class="stars">★★★★★</div><p>“The strongest part was how quickly the paint looked glossier after buffing. I used it on small marks rather than a deep scratch.”</p><div class="who">Verified customer</div><div class="city">Nigeria</div></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“Much easier than turning a small cosmetic issue into a full repair conversation. The page should show this process clearly.”</p><div class="who">Verified customer</div><div class="city">Nigeria</div></article>
+          <article class="review"><div class="stars">★★★★★</div><p>“The bundle makes sense when you maintain more than one car. I would still inspect the scratch first before using any polish.”</p><div class="who">Verified customer</div><div class="city">Nigeria</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">FAQ</div>
+          <h2>Remove doubts before they become exits.</h2>
+        </div>
+        <div class="faq">
+          <details open><summary>Will it repair a deep scratch?</summary><p>No cosmetic wax should be presented as a universal repair for deep gouges. If paint is missing or primer/metal is exposed, use a professional repair process.</p></details>
+          <details><summary>Can I use it on any paint colour?</summary><p>Test on a small inconspicuous area first and follow the product's real manufacturer instructions for compatible surfaces.</p></details>
+          <details><summary>Do I need a machine polisher?</summary><p>This page is designed around hand application for convenience. A machine can change the correction result and should be used with the right pad, compound and technique.</p></details>
+          <details><summary>How often should I use it?</summary><p>Use the manufacturer's actual maintenance guidance. Avoid inventing a fixed protection period when the product's technical data has not been supplied.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="order" class="order-section">
+      <div class="container order-grid">
+        <div class="order-intro">
+          <div>
+            <div class="kicker">Order</div>
+            <h2>Ready to bring the shine back?</h2>
+            <p class="lead">Select a pack, add delivery details, and use the generated order summary to connect to your actual WhatsApp/order endpoint.</p>
+          </div>
+          <div class="summary-card" aria-live="polite">
+            <div class="summary-row"><span>Pack</span><strong id="sumPack">1 Bottle</strong></div>
+            <div class="summary-row"><span>Subtotal</span><strong id="sumSubtotal">₦27,500</strong></div>
+            <div class="summary-row"><span>Delivery</span><strong>Confirm at order</strong></div>
+          </div>
+        </div>
+        <div class="order-form">
+          <form id="orderForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+              <div class="field"><label for="state">State</label><input id="state" name="state" autocomplete="address-level1" required></div>
+              <div class="field"><label for="city">City / area</label><input id="city" name="city" autocomplete="address-level2" required></div>
+              <div class="field full"><label for="address">Delivery address</label><textarea id="address" name="address" autocomplete="street-address" required></textarea></div>
+              <div class="field"><label for="pack">Pack</label>
+                <select id="pack" name="pack">
+                  <option value="1 Bottle|27500">1 Bottle — ₦27,500</option>
+                  <option value="2 Bottles|49500">2 Bottles — ₦49,500</option>
+                </select>
+              </div>
+              <div class="field"><label for="qty">Quantity</label><input id="qty" name="qty" type="number" min="1" max="20" value="1" required></div>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">Create order message →</button><a class="btn btn-secondary" href="#offer">Change pack</a></div>
+            <div class="form-note">This standalone build does not pretend to have a live payment/WhatsApp backend. Configure the real destination in the script before deployment.</div>
+            <div id="status" class="status" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-buy">
+    <div class="price-mini"><strong>Car Scratch Wax</strong><span>From ₦27,500</span></div>
+    <a class="btn btn-primary" href="#order">Order now</a>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="footer-brand">CAR SCRATCH WAX</div><div>Redeveloped product-page concept.</div></div>
+      <div class="fine">Before production, replace placeholder reviews, confirm product specifications, connect the real fulfilment/payment endpoint, add verified product photography, and implement your actual shipping/stock rules.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Production integration point — intentionally empty rather than inventing a store phone/API.
+    const CONFIG = {
+      whatsappNumber: "", // e.g. 2348012345678 — digits only, country code included
+      orderEndpoint: ""    // e.g. https://your-domain.com/api/orders
+    };
+
+    const money = value => new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(value);
+    const packSelect = document.getElementById('pack');
+    const qtyInput = document.getElementById('qty');
+    const sumPack = document.getElementById('sumPack');
+    const sumSubtotal = document.getElementById('sumSubtotal');
+    const status = document.getElementById('status');
+
+    function syncSummary() {
+      const [name, price] = packSelect.value.split('|');
+      const qty = Math.max(1, Math.min(20, Number(qtyInput.value) || 1));
+      qtyInput.value = qty;
+      sumPack.textContent = qty > 1 ? `${name} × ${qty}` : name;
+      sumSubtotal.textContent = money(Number(price) * qty);
+    }
+
+    document.querySelectorAll('.choose-bundle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pack = btn.dataset.pack;
+        const price = btn.dataset.price;
+        packSelect.value = `${pack}|${price}`;
+        qtyInput.value = 1;
+        syncSummary();
+        document.getElementById('order').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    packSelect.addEventListener('change', syncSummary);
+    qtyInput.addEventListener('input', syncSummary);
+    syncSummary();
+
+    document.getElementById('orderForm').addEventListener('submit', async event => {
+      event.preventDefault();
+      status.className = 'status';
+      status.textContent = '';
+      const form = new FormData(event.currentTarget);
+      const [packName, unitPrice] = String(form.get('pack')).split('|');
+      const qty = Number(form.get('qty'));
+      const payload = {
+        name: String(form.get('name')).trim(),
+        phone: String(form.get('phone')).trim(),
+        state: String(form.get('state')).trim(),
+        city: String(form.get('city')).trim(),
+        address: String(form.get('address')).trim(),
+        pack: packName,
+        quantity: qty,
+        subtotal: Number(unitPrice) * qty
+      };
+
+      if (!payload.name || !payload.phone || !payload.state || !payload.city || !payload.address || !Number.isInteger(qty) || qty < 1 || qty > 20) {
+        status.className = 'status error show';
+        status.textContent = 'Please complete all required fields and choose a quantity from 1–20.';
+        return;
+      }
+
+      if (CONFIG.orderEndpoint) {
+        try {
+          const response = await fetch(CONFIG.orderEndpoint, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error(`Order endpoint returned ${response.status}`);
+          status.className = 'status success show';
+          status.textContent = 'Order submitted successfully. Your fulfilment system should now handle confirmation.';
+          event.currentTarget.reset();
+          syncSummary();
+          return;
+        } catch (error) {
+          console.error('Order submission failed:', error);
+          status.className = 'status error show';
+          status.textContent = 'The order service could not be reached. Your details were not silently discarded; check the configured endpoint.';
+          return;
+        }
+      }
+
+      const text = [
+        'CAR SCRATCH WAX ORDER',
+        `Name: ${payload.name}`,
+        `Phone: ${payload.phone}`,
+        `State: ${payload.state}`,
+        `City: ${payload.city}`,
+        `Address: ${payload.address}`,
+        `Pack: ${payload.pack}`,
+        `Quantity: ${payload.quantity}`,
+        `Subtotal: ${money(payload.subtotal)}`
+      ].join('\n');
+
+      if (CONFIG.whatsappNumber) {
+        const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+        status.className = 'status success show';
+        status.textContent = 'Your order message is ready in WhatsApp.';
+      } else {
+        try {
+          await navigator.clipboard.writeText(text);
+          status.className = 'status success show';
+          status.textContent = 'Order summary copied. Add your real WhatsApp number or order API in CONFIG to make this one-click in production.';
+        } catch (error) {
+          console.error('Clipboard copy failed:', error);
+          status.className = 'status error show';
+          status.textContent = 'No live order destination is configured. Add CONFIG.whatsappNumber or CONFIG.orderEndpoint before deployment.';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
